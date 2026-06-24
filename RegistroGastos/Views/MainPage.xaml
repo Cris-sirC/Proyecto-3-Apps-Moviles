@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:RegistroGastos.ViewModels"
+             x:Class="RegistroGastos.Views.MainPage"
+             Title="GASTOS">
+    <Grid RowDefinitions="200, Auto, *">
+        <BoxView Color="#2A0B4C" Grid.Row="0" Grid.RowSpan="2" Margin="0,0,0,50"/>
+        
+        <VerticalStackLayout Grid.Row="0" Padding="20,20,20,0">
+            <Label Text="Hola," TextColor="White" FontSize="16"/>
+            <Label Text="Alexis Henríquez" TextColor="White" FontSize="24" FontAttributes="Bold"/>
+        </VerticalStackLayout>
+
+        <Border Grid.Row="1" BackgroundColor="White" StrokeShape="RoundRectangle 15" Margin="20,-70,20,0" Padding="20">
+            <Border.Shadow>
+                <Shadow Brush="Black" Offset="0,5" Opacity="0.1" Radius="10"/>
+            </Border.Shadow>
+            <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*, *">
+                <Label Text="Balance" TextColor="Gray" FontSize="14" Grid.ColumnSpan="2"/>
+                <Label Text="{Binding BalanceTotal, StringFormat='${0:N2}'}" FontAttributes="Bold" FontSize="24" TextColor="Black" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,15"/>
+                <VerticalStackLayout Grid.Row="2" Grid.Column="0">
+                    <Label Text="Ingresos" TextColor="Gray" FontSize="14"/>
+                    <Label Text="{Binding TotalIngresos, StringFormat='${0:N2}'}" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Row="2" Grid.Column="1">
+                    <Label Text="Egresos" TextColor="Gray" FontSize="14"/>
+                    <Label Text="{Binding TotalGastos, StringFormat='${0:N2}'}" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+        <VerticalStackLayout Grid.Row="2" Padding="20">
+            <Label Text="Transacciones" TextColor="Gray" FontSize="16" Margin="0,0,0,10"/>
+            <CollectionView ItemsSource="{Binding Transacciones}">
+                <CollectionView.EmptyView>
+                    <Label Text="Sin datos, click en el botón + para agregar una nueva transacción" TextColor="Gray" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,20,0,0"/>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto" Padding="0,10">
+                            <Label Text="{Binding Glosa}" TextColor="Black" FontSize="16"/>
+                            <Label Text="{Binding Fecha, StringFormat='{0:dd-MM-yyyy}'}" TextColor="Gray" FontSize="12" Grid.Row="1"/>
+                            <Label Text="{Binding MontoFormateado}" TextColor="{Binding ColorMonto}" FontAttributes="Bold" Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+
+        <Button Grid.Row="1" Grid.RowSpan="2" Text="+" Command="{Binding IrANuevaTransaccionCommand}"
+                BackgroundColor="#2A0B4C" TextColor="White" FontSize="30" WidthRequest="60" HeightRequest="60" CornerRadius="30"
+                HorizontalOptions="End" VerticalOptions="Start" Margin="0,20,30,0"/>
+    </Grid>
+</ContentPage>

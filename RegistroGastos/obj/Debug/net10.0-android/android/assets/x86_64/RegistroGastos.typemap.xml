@@ -1,0 +1,10 @@
+<api type="debug" assembly-name="RegistroGastos" mvid="08ec2ed59d0a4129a6fffcd9b441bb96">
+  <java-to-managed>
+    <entry java-name="crc64c2b7604dc0badb0b/MainActivity" managed-name="RegistroGastos.MainActivity, RegistroGastos" managed-type-token-id="33554442" />
+    <entry java-name="crc64c2b7604dc0badb0b/MainApplication" managed-name="RegistroGastos.MainApplication, RegistroGastos" managed-type-token-id="33554443" />
+  </java-to-managed>
+  <managed-to-java>
+    <entry java-name="crc64c2b7604dc0badb0b/MainActivity" managed-name="RegistroGastos.MainActivity, RegistroGastos" managed-type-token-id="33554442" />
+    <entry java-name="crc64c2b7604dc0badb0b/MainApplication" managed-name="RegistroGastos.MainApplication, RegistroGastos" managed-type-token-id="33554443" />
+  </managed-to-java>
+</api>
